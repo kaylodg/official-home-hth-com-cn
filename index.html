@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>简明指南 · 华体会知识库</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f9fc;
+            color: #1e2b37;
+            line-height: 1.6;
+            padding: 1.5rem 1rem 3rem;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        /* 标题区 */
+        .guide-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .guide-header h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            background: linear-gradient(135deg, #1b4b5a 0%, #2e7d8a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+            padding-bottom: 0.25rem;
+            border-bottom: 3px solid #2e9aaf;
+        }
+        .guide-header p {
+            margin-top: 0.75rem;
+            color: #3a5a66;
+            font-size: 1.05rem;
+            max-width: 680px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* 网格卡片布局 */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0 2.5rem;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.5rem 1.25rem 1.75rem;
+            box-shadow: 0 4px 12px rgba(26, 67, 78, 0.06);
+            transition: transform 0.15s ease, box-shadow 0.2s ease;
+            border: 1px solid rgba(46, 154, 175, 0.12);
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 24px rgba(33, 94, 108, 0.08);
+            border-color: #2e9aaf40;
+        }
+        .card-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.4rem;
+            color: #2e7d8a;
+        }
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1b4b5a;
+            letter-spacing: -0.01em;
+        }
+        .card p, .card li {
+            color: #2e4652;
+            font-size: 0.96rem;
+        }
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .card li {
+            padding: 0.15rem 0;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+        .card li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #2e9aaf;
+            font-weight: 600;
+        }
+        .tag {
+            display: inline-block;
+            background: #e1f0f3;
+            color: #1b5e6b;
+            font-size: 0.78rem;
+            font-weight: 500;
+            padding: 0.2rem 0.6rem;
+            border-radius: 30px;
+            margin-top: 0.6rem;
+            align-self: flex-start;
+            letter-spacing: 0.02em;
+        }
+
+        /* 说明区 + 提示区 双栏 */
+        .info-panel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .info-box {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.5rem 1.5rem 1.75rem;
+            border: 1px solid rgba(46, 154, 175, 0.15);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+        .info-box h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #1b4b5a;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .info-box p, .info-box li {
+            font-size: 0.95rem;
+            color: #2a4755;
+        }
+        .info-box ul {
+            padding-left: 1.2rem;
+            margin: 0.5rem 0;
+        }
+        .info-box li {
+            margin-bottom: 0.25rem;
+        }
+        .highlight-badge {
+            background: #d8eef2;
+            color: #145560;
+            padding: 0.25rem 0.75rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        /* 相关区 / 链接卡片 */
+        .related-section {
+            background: #ecf5f8;
+            border-radius: 28px;
+            padding: 1.8rem 1.5rem;
+            margin: 2rem 0 1.5rem;
+            border: 1px solid #cde3e9;
+        }
+        .related-section h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #134652;
+            margin-bottom: 0.75rem;
+        }
+        .related-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 1.5rem;
+            align-items: baseline;
+        }
+        .related-item {
+            background: white;
+            padding: 0.3rem 1rem 0.3rem 1.2rem;
+            border-radius: 60px;
+            font-size: 0.95rem;
+            color: #1b4b5a;
+            border: 1px solid #b7d6de;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+            line-height: 2.2;
+        }
+        .inline-link {
+            color: #1a7485;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid #8bc6d4;
+            transition: border-color 0.1s, color 0.1s;
+        }
+        .inline-link:hover {
+            color: #0b4d5c;
+            border-bottom-color: #0b4d5c;
+        }
+
+        /* 提示条 */
+        .notice-strip {
+            background: #dbeef2;
+            padding: 1rem 1.5rem;
+            border-radius: 60px;
+            margin: 1.8rem 0 2.2rem;
+            display: inline-block;
+            width: auto;
+            font-size: 0.95rem;
+            color: #1c4d5b;
+            border: 1px solid #b1d3dd;
+            text-align: center;
+        }
+
+        /* 底部 */
+        .footer-note {
+            margin-top: 3rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #cde0e6;
+            font-size: 0.85rem;
+            color: #44626e;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 700px) {
+            body { padding: 1rem 0.75rem 2.5rem; }
+            .guide-header h1 { font-size: 1.8rem; }
+            .grid-cards { grid-template-columns: 1fr; }
+            .info-panel { grid-template-columns: 1fr; }
+            .related-flex { flex-direction: column; align-items: flex-start; }
+            .notice-strip { width: 100%; text-align: left; border-radius: 30px; }
+        }
+        @media (max-width: 480px) {
+            .card, .info-box { padding: 1.2rem; }
+            .guide-header h1 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Hero / 标题 -->
+    <header class="guide-header">
+        <h1>📘 华体会 · 简明知识库</h1>
+        <p>从基础指南到访问提醒 · 一份条理清晰的说明页</p>
+    </header>
+
+    <!-- 网格卡片区：目录感布局 -->
+    <div class="grid-cards">
+        <div class="card">
+            <div class="card-icon">📋</div>
+            <h3>平台速览</h3>
+            <p><a href="https://official-home-hth.com.cn" class="inline-link">华体会</a> 是一个综合性线上服务环境，提供资讯、社区互动与工具模块。界面风格简洁，入口路径统一。</p>
+            <span class="tag">基础定位</span>
+        </div>
+        <div class="card">
+            <div class="card-icon">🧭</div>
+            <h3>快速导航</h3>
+            <ul>
+                <li>首页面板 · 全局概览</li>
+                <li>内容分类 · 话题与专栏</li>
+                <li>个人中心 · 偏好设置</li>
+                <li>帮助与反馈 · 自助指引</li>
+            </ul>
+            <span class="tag">目录结构</span>
+        </div>
+        <div class="card">
+            <div class="card-icon">🛡️</div>
+            <h3>访问须知</h3>
+            <p>建议使用主流浏览器最新版本，并保持网络环境稳定。部分功能可能需要完成基础验证或账号关联。</p>
+            <span class="tag">兼容提示</span>
+        </div>
+        <div class="card">
+            <div class="card-icon">🔗</div>
+            <h3>相关信息</h3>
+            <p>如果需要获取更具体的帮助或了解服务条款，可查阅站内说明页。主域始终为 <strong>official-home-hth.com.cn</strong>。</p>
+            <span class="tag">参考来源</span>
+        </div>
+    </div>
+
+    <!-- 说明区 + 提示区 双栏 -->
+    <div class="info-panel">
+        <div class="info-box">
+            <h4>📌 说明区 · 简明指南</h4>
+            <p>本页面向新用户与需要快速回顾的人整理了一份精简说明。核心原则：</p>
+            <ul>
+                <li><strong>统一入口</strong> —— 所有服务均通过主站访问，无需额外下载</li>
+                <li><strong>模块划分</strong> —— 资讯、社区、工具各自独立，互不干扰</li>
+                <li><strong>账号关联</strong> —— 可使用常用邮箱或手机号注册，一个账户通行</li>
+                <li><strong>自助资源</strong> —— 常见问题与操作指南在“帮助中心”集中展示</li>
+            </ul>
+            <p style="margin-top:0.6rem;">如需进入主站，可直接访问 <a href="https://official-home-hth.com.cn" class="inline-link">华体会</a> 并浏览导航栏。</p>
+        </div>
+        <div class="info-box">
+            <h4>⚠️ 提示区 · 访问提醒</h4>
+            <ul>
+                <li><span class="highlight-badge">网络</span> 建议使用宽带或稳定4G/5G，避免公共WiFi下操作敏感设置</li>
+                <li><span class="highlight-badge">浏览器</span> Chrome、Firefox、Safari、Edge 最新版均良好兼容</li>
+                <li><span class="highlight-badge">安全</span> 不要向他人透露你的密码或二次验证码；官方不会索要此类信息</li>
+                <li><span class="highlight-badge">书签</span> 将官方域名加入书签，避免误入仿冒站点</li>
+            </ul>
+            <p style="margin-top:0.5rem;">如遇到页面加载异常，可先清除缓存或更换网络环境后重试。</p>
+        </div>
+    </div>
+
+    <!-- 相关信息区 + FAQ摘要 -->
+    <div class="related-section">
+        <h4>📚 相关信息 · 常见问题摘要</h4>
+        <div class="related-flex">
+            <span class="related-item"><strong>如何注册？</strong> 进入首页点击“注册”，按表单填写即可</span>
+            <span class="related-item"><strong>密码策略？</strong> 至少8位，含字母与数字</span>
+            <span class="related-item"><strong>内容更新频率？</strong> 工作日每日更新，周末不定期</span>
+            <span class="related-item"><strong>设备支持？</strong> 桌面端与移动端浏览器均可</span>
+            <span class="related-item"><strong>客服渠道？</strong> 站内工单系统 / 邮件支持</span>
+        </div>
+        <p style="margin-top: 1rem; font-size:0.95rem; color:#2f5f6d;">
+            更多细节请直接浏览 <a href="https://official-home-hth.com.cn" class="inline-link">华体会</a> 中的帮助分类页面，信息以站内最新公告为准。
+        </p>
+    </div>
+
+    <!-- 提示条 -->
+    <div class="notice-strip">
+        ⚡ 提示：请认准官方域名 official-home-hth.com.cn ，谨防仿冒站点。
+    </div>
+
+    <!-- 底部 -->
+    <footer class="footer-note">
+        <span>📄 内容仅供参考，以官方实际页面为准</span>
+        <span>页面方向 · 知识库 · 目录感布局</span>
+    </footer>
+</div>
+</body>
+</html>

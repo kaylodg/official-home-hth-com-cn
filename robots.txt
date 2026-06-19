@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kaylodg.github.io/official-home-hth-com-cn/sitemap.xml
