@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>极速赛车 · 信息索引与使用说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fbe9d7 0%, #f6d5b3 30%, #edc49b 70%, #e9b88a 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+            line-height: 1.6;
+            color: #2f2a24;
+        }
+
+        .container {
+            max-width: 960px;
+            width: 100%;
+            perspective: 1px;
+        }
+
+        .card {
+            background: rgba(255, 250, 240, 0.92);
+            backdrop-filter: blur(2px);
+            border-radius: 32px;
+            padding: 2.5rem 2.2rem;
+            box-shadow: 0 20px 40px -12px rgba(100, 60, 20, 0.25),
+                        0 8px 20px rgba(180, 120, 70, 0.1);
+            transition: box-shadow 0.2s ease;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 235, 210, 0.7);
+        }
+
+        .card:hover {
+            box-shadow: 0 24px 48px -14px rgba(120, 70, 20, 0.3);
+        }
+
+        h1 {
+            font-size: 2.6rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #4f3a28;
+            margin-bottom: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        h1 small {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #8a7b6b;
+            letter-spacing: 0.05em;
+            margin-left: 0.6rem;
+        }
+
+        .subhead {
+            font-size: 1.1rem;
+            color: #7a6a5a;
+            border-left: 4px solid #dbb594;
+            padding-left: 1rem;
+            margin: 1rem 0 1.8rem 0;
+        }
+
+        h2 {
+            font-size: 1.7rem;
+            font-weight: 450;
+            color: #4f3a28;
+            border-bottom: 2px solid #ecd2b8;
+            padding-bottom: 0.3rem;
+            margin: 2rem 0 1.2rem 0;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #5f4a38;
+            margin-top: 0.8rem;
+            margin-bottom: 0.4rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: #3b342e;
+        }
+
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.6rem;
+            margin: 1.8rem 0;
+        }
+
+        .highlight-item {
+            background: rgba(237, 216, 192, 0.3);
+            padding: 1.2rem 1.2rem 1.2rem 1.6rem;
+            border-radius: 24px;
+            border-left: 6px solid #dbb594;
+        }
+
+        .highlight-item strong {
+            display: block;
+            font-weight: 550;
+            color: #4b3728;
+            margin-bottom: 0.3rem;
+        }
+
+        .use-case {
+            background: #f6ede4;
+            border-radius: 28px;
+            padding: 1.8rem 2rem;
+            margin: 1.8rem 0;
+        }
+
+        .use-case p {
+            margin-bottom: 0.6rem;
+        }
+
+        .faq-entry {
+            margin: 1rem 0 1.4rem 0;
+            padding-left: 0.5rem;
+        }
+
+        .faq-entry dt {
+            font-weight: 550;
+            color: #4f3a28;
+            margin-bottom: 0.2rem;
+            font-size: 1.1rem;
+        }
+
+        .faq-entry dd {
+            margin-left: 1.2rem;
+            color: #5f4f3e;
+        }
+
+        .tip-box {
+            background: #e8d9cc;
+            border-radius: 28px;
+            padding: 1.4rem 1.8rem;
+            margin: 2rem 0 1rem;
+            font-size: 0.95rem;
+            color: #3f342c;
+        }
+
+        .inline-link {
+            color: #a0522d;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.15s, background 0.15s;
+            background: rgba(160, 82, 45, 0.06);
+            padding: 0.1rem 0.2rem;
+            border-radius: 6px;
+        }
+
+        .inline-link:hover {
+            border-bottom-color: #b06a3e;
+            background: rgba(160, 82, 45, 0.12);
+        }
+
+        .cta-line {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid #ecd2b8;
+            font-size: 1.05rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #e5cfbb;
+            margin: 1.8rem 0;
+            opacity: 0.5;
+        }
+
+        .note-foot {
+            font-size: 0.9rem;
+            color: #8a7b6b;
+            background: rgba(200, 170, 145, 0.1);
+            padding: 0.6rem 1rem;
+            border-radius: 40px;
+            display: inline-block;
+            margin-top: 0.8rem;
+        }
+
+        @media (max-width: 680px) {
+            body {
+                padding: 1rem 0.8rem;
+            }
+            .card {
+                padding: 1.8rem 1.2rem;
+                border-radius: 24px;
+            }
+            h1 {
+                font-size: 2rem;
+                flex-wrap: wrap;
+            }
+            h1 small {
+                margin-left: 0;
+            }
+            .highlight-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .use-case {
+                padding: 1.2rem 1.2rem;
+            }
+            .faq-entry dd {
+                margin-left: 0.6rem;
+            }
+        }
+
+        @media (max-width: 440px) {
+            h1 {
+                font-size: 1.6rem;
+            }
+            .subhead {
+                font-size: 1rem;
+            }
+            .card {
+                padding: 1.2rem 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>
+            🏎️ 极速赛车
+            <small>资料索引 · 产品说明</small>
+        </h1>
+        <div class="subhead">
+            从信息整理出发，梳理 <a href="https://high-speedracing.com" class="inline-link">极速赛车</a> 所代表的竞速类产品内容 —— 面向爱好者、轻度玩家与资料查阅者。
+        </div>
+
+        <p>
+            竞速类内容在数字资料中一直占有独特的位置。围绕“极速”这一关键词，我们可以从车辆动力学设定、赛道环境模拟、以及操控反馈逻辑等层面去理解产品设计思路。以下摘要基于公开信息与常见产品特征整理而成，不构成性能承诺。
+        </p>
+
+        <!-- 亮点卡片 左2右2 -->
+        <div class="highlight-grid">
+            <div class="highlight-item">
+                <strong>📊 信息密度适中</strong>
+                向用户提供可检索的赛车属性，包括功率推重比、空气动力套件分级、轮胎配方选型等，便于横向比较。
+            </div>
+            <div class="highlight-item">
+                <strong>⚙️ 调校索引</strong>
+                公开的调校参考表涵盖悬挂刚度、防倾杆、差速器预载等参数，协助理解不同设定对圈速的影响。
+            </div>
+            <div class="highlight-item">
+                <strong>🧭 场景标签系统</strong>
+                将赛道环境按温度、海拔、路面磨损程度分类，帮助使用者匹配对应车辆配置。
+            </div>
+            <div class="highlight-item">
+                <strong>📚 术语库与常见问题</strong>
+                从“循迹刹车”到“侧倾中心”，提供简明定义，降低入门学习门槛。
+            </div>
+        </div>
+
+        <h2>使用建议 · 从资料角度</h2>
+        <p>
+            如果你正在整理竞速类产品的使用笔记或内容索引，可以按以下顺序建立结构：<br>
+            <strong>①</strong> 先明确目标赛道或场景的特性（弯道数量、直道长度、路面材质）；<br>
+            <strong>②</strong> 查阅对应车辆的动力曲线与传动比设定；<br>
+            <strong>③</strong> 参考轮胎工作温度区间和磨损模型；<br>
+            <strong>④</strong> 结合电子辅助系统的介入逻辑（牵引力控制、车身稳定）进行微调。
+        </p>
+        <p>
+            上述步骤在多个竞速产品文档中均有体现，也适用于理解 <a href="https://high-speedracing.com" class="inline-link">极速赛车</a> 相关内容组织方式。建议结合官方说明与社区实测数据交叉验证。
+        </p>
+
+        <div class="use-case">
+            <h3>🏁 典型使用场景</h3>
+            <p><strong>场景A · 入门资料整理</strong><br>
+            收集默认车辆设定与推荐调校，制作速查表。重点关注前后下压力平衡与刹车 Bias 范围。</p>
+            <p><strong>场景B · 赛道对比分析</strong><br>
+            选取三条差异较大的赛道（高速赛道 / 技术赛道 / 混合赛道），记录同一辆车的圈速与动态反馈。</p>
+            <p><strong>场景C · 轮胎与油耗映射</strong><br>
+            根据赛事圈数模拟进站策略，记录胎耗与燃油载重变化对单圈时间的累计影响。</p>
+        </div>
+
+        <h2>FAQ 摘要 · 来自资料整理者的常见问题</h2>
+        <dl class="faq-entry">
+            <dt>问：极速赛车产品的数据更新频率如何？</dt>
+            <dd>通常以赛季或大型内容包为节点更新车辆参数与赛道数据。建议关注官网公告或产品内更新日志。</dd>
+            <dt>问：不同调校参数的优先级如何判断？</dt>
+            <dd>优先保证轮胎工作温度在推荐区间内，其次调整阻尼获得稳定的弯中姿态。没有绝对最优解，需结合个人驾驶风格。</dd>
+            <dt>问：是否支持外部遥测数据分析？</dt>
+            <dd>部分版本支持导出 telemetry 数据（悬浮高度、横向加速度、油门/刹车行程），可用于独立分析。</dd>
+            <dt>问：资料中提到的“赛道抓地力水平”如何量化？</dt>
+            <dd>一般以摩擦系数 μ 值范围呈现（干地 1.05–1.20 之间，湿地 0.60–0.85 之间）。具体数值随温度与橡胶颗粒累积变化。</dd>
+        </dl>
+
+        <div class="tip-box">
+            💡 <strong>资料整理提示：</strong> 在整理竞速类产品信息时，建议优先收集“可控变量”与“固定环境参数”两类数据。例如：胎压、防倾杆刚度视为可控变量；赛道时间、天气视为固定参数。这样可以建立更清晰的索引结构。
+        </div>
+
+        <!-- 自然嵌入第二个“极速赛车”链接 -->
+        <p>
+            如果你希望进一步查阅车辆列表、赛道数据库以及社区搭建的调校分享平台，可以直接访问 <a href="https://high-speedracing.com" class="inline-link">极速赛车</a> 了解产品详情。页面内容偏向资料集成，适合用作参考起点。
+        </p>
+
+        <hr>
+        <p style="font-size: 0.9rem; color: #7f6f5e;">
+            <span class="note-foot">📁 本页面为产品说明式索引，所有描述基于公开可查信息整理，不承诺特定性能表现。数据若有更新，请以官方最新版本为准。</span>
+        </p>
+        <p style="margin-top: 1rem; color: #7f6f5e; font-size: 0.9rem;">
+            — 内容方向：资料整理 · 温和引导 · 尊重用户判断
+        </p>
+    </div>
+</div>
+</body>
+</html>
