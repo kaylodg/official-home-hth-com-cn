@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hth · 备用入口与收藏页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #fafaf9;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #1c1c1e;
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+    .page-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    /* hero */
+    .hero {
+      text-align: center;
+      padding: 3rem 0 2rem;
+      border-bottom: 1px solid #e9e8e6;
+    }
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+      color: #1a1a1a;
+    }
+    .hero .sub {
+      font-size: 1.1rem;
+      color: #6b6b6d;
+      max-width: 480px;
+      margin: 0 auto 0.8rem;
+    }
+    .hero .tagline {
+      font-size: 0.95rem;
+      color: #8f8f91;
+      border-top: 1px dashed #dcdcd9;
+      padding-top: 0.9rem;
+      margin-top: 0.4rem;
+      display: inline-block;
+    }
+
+    /* section */
+    section {
+      margin: 2.5rem 0;
+    }
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 450;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.2rem;
+      color: #232324;
+      position: relative;
+      padding-left: 0.75rem;
+    }
+    h2::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.28em;
+      width: 3px;
+      height: 1.1em;
+      background: #b0b0ae;
+      border-radius: 2px;
+    }
+    p {
+      margin-bottom: 1.1rem;
+      color: #3a3a3c;
+    }
+    .card-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-top: 0.5rem;
+    }
+    .card {
+      background: #ffffff;
+      border: 1px solid #e6e5e2;
+      border-radius: 12px;
+      padding: 1.2rem 1.3rem;
+      flex: 1 1 180px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+      transition: border 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      border-color: #c8c7c3;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+    }
+    .card h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+      color: #1f1f20;
+    }
+    .card p {
+      font-size: 0.92rem;
+      color: #58585a;
+      margin-bottom: 0;
+    }
+
+    /* faq summary list */
+    .faq-summary {
+      background: #f4f3f1;
+      border-radius: 16px;
+      padding: 1.6rem 1.8rem;
+    }
+    .faq-item {
+      margin-bottom: 0.9rem;
+      border-bottom: 1px solid #dfdfdc;
+      padding-bottom: 0.9rem;
+    }
+    .faq-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .faq-q {
+      font-weight: 500;
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+      color: #2b2b2d;
+    }
+    .faq-a {
+      font-size: 0.9rem;
+      color: #5d5d60;
+    }
+
+    /* inline link */
+    a {
+      color: #3f3f42;
+      text-decoration: underline;
+      text-underline-offset: 0.2em;
+      text-decoration-thickness: 1px;
+      text-decoration-color: #c6c5c1;
+      transition: color 0.2s, text-decoration-color 0.2s;
+    }
+    a:hover {
+      color: #0f0f10;
+      text-decoration-color: #8b8b87;
+    }
+
+    /* bottom nav */
+    .bottom-links {
+      margin-top: 2.8rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e2e1dd;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem 1.8rem;
+      font-size: 0.9rem;
+    }
+    .bottom-links a {
+      text-decoration: none;
+      color: #5e5e60;
+    }
+    .bottom-links a:hover {
+      color: #1a1a1c;
+      text-decoration: underline;
+      text-underline-offset: 0.2em;
+    }
+
+    /* responsive */
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .card {
+        flex: 1 1 100%;
+      }
+      .faq-summary {
+        padding: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- hero -->
+  <div class="hero">
+    <h1>hth</h1>
+    <p class="sub">一个值得你再次回来的地方</p>
+    <span class="tagline">· 收藏此页 · 不必每次都搜索 ·</span>
+  </div>
+
+  <!-- 优势区：再次访问的理由 -->
+  <section>
+    <h2>为什么值得记住这里</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>省去重复寻找</h3>
+        <p>网络地址时常变化，保留一个稳健的入口，让你随时能回到熟悉的位置。</p>
+      </div>
+      <div class="card">
+        <h3>保持关注节奏</h3>
+        <p>不需要每次重新适应，直接进入已有认知的界面，效率更高。</p>
+      </div>
+      <div class="card">
+        <h3>简洁直达</h3>
+        <p>只做一件事：当你想起时，能顺畅地回到 <a href="https://get-hth.com">hth</a>，没有多余干扰。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 说明区：持续关注的角度 -->
+  <section>
+    <h2>持续关注的意义</h2>
+    <p>互联网上值得反复光顾的地方并不多。当你发现一个合拍的站点，不妨把它留在书签栏或记在备忘录里。下次再回来时，不用费力回忆路径，也不用重新摸索布局——熟悉感本身就是一种效率。</p>
+    <p>我们希望你保留这条链接，不是因为强制提醒，而是因为它恰好匹配你的某些日常需要。页面可能在细节上有所调整，但核心路径始终指向同一个地方：<a href="https://get-hth.com">hth</a>。</p>
+    <p style="margin-top: 0.6rem;">收藏夹里的地址有时会失效，所以这个页面本身也是一份备用的“记忆锚点”——即使原始入口变动，你仍可以通过此处找到方向。</p>
+  </section>
+
+  <!-- FAQ 摘要 -->
+  <section>
+    <h2>常见疑问 · 摘要</h2>
+    <div class="faq-summary">
+      <div class="faq-item">
+        <div class="faq-q">这个页面的用途是什么？</div>
+        <div class="faq-a">作为再次访问的中转提示页，帮你快速定位到 <a href="https://get-hth.com">hth</a>，同时提供收藏与书签的实用思路。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">是否需要注册或下载？</div>
+        <div class="faq-a">不需要。这里没有引导流程，只有一条清晰可用的链接，以及关于如何稳定回访的建议。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">如果链接失效怎么办？</div>
+        <div class="faq-a">我们会尽力维护此页指向的有效性。同时建议你把本页加入浏览器收藏夹，作为长期备用途径。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 底部链接 -->
+  <div class="bottom-links">
+    <a href="https://get-hth.com">hth</a>
+    <span style="color: #c0bfbb;">·</span>
+    <a href="#">收藏本文</a>
+    <span style="color: #c0bfbb;">·</span>
+    <a href="#">备用说明</a>
+  </div>
+
+  <!-- 极简脚注 -->
+  <p style="text-align: center; margin-top: 2rem; font-size: 0.8rem; color: #a7a7a4;">
+    — 再次相遇，不必绕路 —
+  </p>
+</div>
+</body>
+</html>
