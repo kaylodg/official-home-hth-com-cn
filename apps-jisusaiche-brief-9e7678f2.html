@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>极速赛车 · 场景导航</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f7f7fc;
+      color: #1f1f2e;
+      line-height: 1.6;
+    }
+
+    /* 深色头图 + 导航 */
+    .hero-nav {
+      background: #0d0d1a;
+      color: #e8e8f0;
+      padding: 1.2rem 2.5rem 4rem 2.5rem;
+      background-image: radial-gradient(circle at 20% 30%, #1f1f3a 0%, #0a0a12 100%);
+    }
+
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .logo-area {
+      font-weight: 600;
+      font-size: 1.6rem;
+      letter-spacing: 1px;
+      color: #f2d06b;
+    }
+    .logo-area small {
+      font-size: 0.7rem;
+      font-weight: 300;
+      color: #9e9eb8;
+      margin-left: 6px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      font-size: 0.95rem;
+    }
+    .nav-links a {
+      color: #cacae0;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: #f2d06b;
+    }
+
+    .hero-title {
+      max-width: 1100px;
+      margin: 3rem auto 1.2rem auto;
+    }
+    .hero-title h1 {
+      font-size: 2.8rem;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      color: #f5f5ff;
+      line-height: 1.2;
+    }
+    .hero-title p {
+      margin-top: 0.8rem;
+      font-size: 1.15rem;
+      color: #bebed6;
+      max-width: 620px;
+    }
+
+    /* 内容区 — 浅色背景 */
+    .main-content {
+      max-width: 1100px;
+      margin: -1.6rem auto 0 auto;
+      padding: 0 2rem 3.5rem 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* 三个场景卡片模块 */
+    .scene-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+      margin-bottom: 3.2rem;
+    }
+    .scene-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.6rem 1.5rem 1.8rem 1.5rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid #eaeaf0;
+    }
+    .scene-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 32px rgba(0,0,0,0.06);
+    }
+    .scene-card h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      color: #1b1b2b;
+    }
+    .scene-card .emoji-badge {
+      display: inline-block;
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+    .scene-card p {
+      color: #3f3f52;
+      font-size: 0.95rem;
+    }
+
+    /* 常见说明（类似FAQ摘要） */
+    .faq-note {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.8rem 2rem 2rem 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.02);
+      border: 1px solid #e4e4ee;
+    }
+    .faq-note h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #12121f;
+      margin-bottom: 1rem;
+      border-left: 4px solid #f2d06b;
+      padding-left: 1rem;
+    }
+    .faq-item {
+      display: flex;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+      align-items: flex-start;
+    }
+    .faq-item strong {
+      color: #e0b84c;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .faq-item p {
+      color: #2d2d40;
+    }
+
+    /* 强调色链接嵌入句子 */
+    .inline-link {
+      color: #b8860b;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .inline-link:hover {
+      color: #8f6b0a;
+      text-decoration: underline;
+    }
+
+    /* 说明区小字 */
+    .footnote {
+      background: #f1f1fa;
+      border-radius: 24px;
+      padding: 1.6rem 2rem;
+      color: #3d3d55;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      border: 1px solid #dddeec;
+    }
+    .footnote a {
+      color: #b8860b;
+      text-decoration: underline;
+      font-weight: 500;
+    }
+    .footnote a:hover {
+      color: #7a5d0a;
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #ccc8e0, transparent);
+      margin: 2rem 0;
+    }
+
+    /* 响应式 */
+    @media (max-width: 800px) {
+      .hero-nav {
+        padding: 1rem 1.2rem 3rem 1.2rem;
+      }
+      .hero-title h1 {
+        font-size: 2rem;
+      }
+      .scene-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.2rem;
+      }
+      .nav-links {
+        gap: 1.2rem;
+        font-size: 0.85rem;
+      }
+    }
+    @media (max-width: 540px) {
+      .scene-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-title h1 {
+        font-size: 1.7rem;
+      }
+      .main-content {
+        padding: 0 1rem 2rem 1rem;
+      }
+      .nav-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 深色头图 + 导航 -->
+  <header class="hero-nav">
+    <nav class="nav-bar">
+      <div class="logo-area">
+        ⚡ 极速<span style="color: #e0b84c;">赛车</span>
+        <small>· 场景导航</small>
+      </div>
+      <div class="nav-links">
+        <a href="#scene">场景</a>
+        <a href="#faq">说明</a>
+        <a href="#usage">用法</a>
+      </div>
+    </nav>
+    <div class="hero-title">
+      <h1>一眼识别 · 用在哪</h1>
+      <p>网站聚焦「<a href="https://apps-jisusaiche.com" class="inline-link">极速赛车</a>」相关应用场景，帮你快速判断是否能满足当前需求。下面三个常见方向覆盖大部分使用情况。</p>
+    </div>
+  </header>
+
+  <!-- 正文浅色区 -->
+  <div class="main-content">
+
+    <!-- 三个场景模块 -->
+    <section id="scene" class="scene-grid">
+      <div class="scene-card">
+        <div class="emoji-badge">🏎️</div>
+        <h3>资讯与动态</h3>
+        <p>如果你平时关注赛车类消息、赛事变化或工具更新，可以在 <a href="https://apps-jisusaiche.com" class="inline-link">极速赛车</a> 找到整理好的资源列表，省去四处翻找的麻烦。</p>
+      </div>
+      <div class="scene-card">
+        <div class="emoji-badge">📱</div>
+        <h3>应用与辅助</h3>
+        <p>部分用户会寻找与赛车相关的辅助工具或轻量应用。该站点提供了一些归类入口，适合边浏览边对比。</p>
+      </div>
+      <div class="scene-card">
+        <div class="emoji-badge">🧭</div>
+        <h3>快速导航</h3>
+        <p>不想被杂乱信息干扰？这里直接展示核心链接，进入后即可按需跳转。无论新手还是老用户都能很快上手。</p>
+      </div>
+    </section>
+
+    <!-- 常见说明（FAQ摘要形式） -->
+    <div id="faq" class="faq-note">
+      <h2>常见说明</h2>
+      <div class="faq-item">
+        <strong>Q1</strong>
+        <p>这个站主要提供什么？—— 你可以把它理解成一个围绕「极速赛车」的轻导航页，聚合了一些实用的链接与介绍，没有花哨的承诺，信息比较直接。</p>
+      </div>
+      <div class="faq-item">
+        <strong>Q2</strong>
+        <p>内容更新频率如何？—— 站点保持静态展示，阶段性调整。建议直接收藏 <a href="https://apps-jisusaiche.com" class="inline-link">极速赛车</a> 以便回看。</p>
+      </div>
+      <div class="faq-item">
+        <strong>Q3</strong>
+        <p>使用前需要注意什么？—— 页面上的链接都指向外部或内部资源，请根据自己需要判断。没有隐藏收费或诱导行为，可放心浏览。</p>
+      </div>
+    </div>
+
+    <!-- 补充提示 链接再次出现，自然嵌入 -->
+    <div class="footnote" id="usage">
+      <p>💡 如果你已经打开过 <a href="https://apps-jisusaiche.com">极速赛车</a>，可能会发现界面侧重功能性，没有多余装饰。这种风格的好处是直接——你不需要花时间理解布局，找到感兴趣的部分即可。三个场景卡片覆盖了多数人第一次访问时的目的：查资讯、找工具、或者单纯想看看有什么内容。</p>
+      <p style="margin-top: 0.8rem;">另外，部分新用户会问是否支持移动端。目前页面适配了常见屏幕，手机、平板、桌面都能比较舒服地阅读。如果觉得字体或间距不合适，随时可以缩放浏览器。</p>
+      <hr>
+      <p style="color: #6b6b82;">页面仅作为导航介绍，无夸大表述。最后更新于近期。</p>
+    </div>
+
+  </div>
+
+</body>
+</html>
